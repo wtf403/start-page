@@ -1,6 +1,8 @@
 # Minimalistic browser start page
 
-Supervisord config example:
+![Screenshot](./start-page.png)
+
+[Supervisord](https://github.com/Supervisor/supervisor) config example:
 ```ini
 [program:startpage]
 directory=/your/project/dir/path/
