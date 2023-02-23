@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Source+Serif+Pro:wght@300&display=swap"
+    rel="stylesheet">
+  <title>~</title>
+</head>
+
+<body>
+  <main>
+    <div>
+      <p id="time">
+        <span id="hours"></span>
+        <span id="divider">:</span>
+        <span id="minutes"></span>
+      </p>
+      <p id="date"></p>
+    </div>
+  </main>
+</body>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  main {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-weight: 100;
+    overscroll-behavior: none;
+  }
+
+  main>div {
+    margin-bottom: 20vh;
+  }
+
+  #hours,
+  #minutes,
+  #divider {
+    font-size: 25vmin;
+    line-height: 1;
+    user-select: none;
+    font-family: 'Source Serif Pro';
+    font-weight: 200;
+    letter-spacing: -5px;
+  }
+
+  #divider {
+    font-family: 'Advent Pro';
+    font-size: 30vmin;
+    padding-inline: 10px 20px;
+    line-height: 1;
+  }
+
+  #date {
+    font-size: 5vmin;
+    line-height: 1;
+    user-select: none;
+    font-family: 'Helvetica';
+    font-weight: 400;
+    margin-top: -1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: #18191b;
+      color: white;
+    }
+  }
+
+</style>
+
+<script>
+  var d = new Date();
+  var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  var dateEl = document.getElementById("date");
+  var hoursEl = document.getElementById("hours");
+  var minutesEl = document.getElementById("minutes");
+
+  function getDate() {
+    dateEl.innerHTML = monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+
+  function timer() {
+    setTimeout(timer, 1000);
+    var d = new Date();
+    var hours = d.getHours();
+    hours = (hours < 10 ? "0" + hours : hours);
+    var minutes = d.getMinutes();
+    minutes = (minutes < 10 ? "0" + minutes : minutes);
+    hoursEl.innerHTML = hours;
+    minutesEl.innerHTML = minutes;
+    setTimeout(timer, 1000 * 60);
+  }
+
+  getDate();
+  timer();
+</script>
+
+</html>
